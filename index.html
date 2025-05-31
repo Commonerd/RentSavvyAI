@@ -1,937 +1,1158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="U-GWwZOKUY-FqRJYQu4ealLEaLnFK4WTKgDI7SCbS3E"
+    />
     <title>RentSavvy AI - Your Global Rent & Living Cost Predictor</title>
-    <meta name="description" content="RentSavvy AI helps you predict rent and living costs globally. Get personalized affordability insights with our AI-powered tool. Ideal for expats, digital nomads, and anyone planning a move.">
-    <meta name="keywords" content="rent predictor, cost of living, housing affordability, expat living, digital nomad, international relocation, AI rent calculator, real estate, global rent, salary for rent, living expenses, finance">
-    <meta name="author" content="RentSavvy AI Team">
-    <meta property="og:title" content="RentSavvy AI - Predict Your Global Rent & Living Costs">
-    <meta property="og:description" content="Plan your move smarter with RentSavvy AI. Accurate rent and living cost predictions, personalized affordability insights for cities worldwide.">
-    <meta property="og:image" content="https://www.rentsavvy.ai/images/og-image.png"> <meta property="og:url" content="https://www.rentsavvy.ai/">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.rentsavvy.ai/">
+    <meta
+      name="description"
+      content="RentSavvy AI helps you predict rent and living costs globally. Get personalized affordability insights with our AI-powered tool. Ideal for expats, digital nomads, and anyone planning a move."
+    />
+    <meta
+      name="keywords"
+      content="rent predictor, cost of living, housing affordability, expat living, digital nomad, international relocation, AI rent calculator, real estate, global rent, salary for rent, living expenses, finance"
+    />
+    <meta name="author" content="RentSavvy AI Team" />
+    <meta
+      property="og:title"
+      content="RentSavvy AI - Predict Your Global Rent & Living Costs"
+    />
+    <meta
+      property="og:description"
+      content="Plan your move smarter with RentSavvy AI. Accurate rent and living cost predictions, personalized affordability insights for cities worldwide."
+    />
+    <meta
+      property="og:image"
+      content="https://www.rentsavvy.ai/images/og-image.png"
+    />
+    <meta property="og:url" content="https://www.rentsavvy.ai/" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://www.rentsavvy.ai/" />
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <style>
-        /* CSS for simple, clean, and responsive design */
-        :root {
-            --primary-color: #4CAF50; /* Green */
-            --secondary-color: #2196F3; /* Blue */
-            --text-color: #333;
-            --bg-color: #f8f8f8;
-            --card-bg: #fff;
-            --border-color: #ddd;
-            --shadow-color: rgba(0,0,0,0.1);
-        }
+      /* CSS for simple, clean, and responsive design */
+      :root {
+        --primary-color: #4caf50; /* Green */
+        --secondary-color: #2196f3; /* Blue */
+        --text-color: #333;
+        --bg-color: #f8f8f8;
+        --card-bg: #fff;
+        --border-color: #ddd;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            box-shadow: 0 2px 4px var(--shadow-color);
-        }
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1.2rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px var(--shadow-color);
+      }
 
+      header h1 {
+        margin: 0;
+        font-size: 2.2em;
+      }
+
+      header p {
+        margin: 0.5rem 0 0;
+        font-size: 1.1em;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px var(--shadow-color);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="number"],
+      .form-group select {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 1em;
+        box-sizing: border-box; /* Ensures padding doesn't increase total width */
+      }
+
+      button {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        background-color: #1976d2; /* Darker blue */
+      }
+
+      #results {
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        padding-top: 2rem;
+      }
+
+      #results h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .result-item {
+        background-color: #f0fcf0;
+        border-left: 5px solid var(--primary-color);
+        padding: 1rem 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+      }
+
+      .result-item strong {
+        color: #333;
+      }
+
+      .affordability-score {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background-color: #e0f2f7;
+        border-radius: 8px;
+        border: 1px solid #90caf9;
+      }
+
+      .affordability-score h3 {
+        color: #1a237e;
+        margin-bottom: 0.8rem;
+      }
+
+      .affordability-score .score {
+        font-size: 3em;
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .affordability-score .feedback {
+        font-size: 1.2em;
+        margin-top: 0.5rem;
+        color: #444;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        margin-top: 3rem;
+        font-size: 0.9em;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 0.5rem;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Language Selector */
+      .language-selector {
+        text-align: right;
+        padding: 10px 1.5rem;
+        background-color: #eee;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .language-selector select {
+        padding: 5px 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      @media (max-width: 768px) {
         header h1 {
-            margin: 0;
-            font-size: 2.2em;
+          font-size: 1.8em;
         }
-
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.1em;
-        }
-
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-            flex-grow: 1;
+          margin: 1rem auto;
+          padding: 0 1rem;
         }
-
         .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            padding: 2rem;
-            margin-bottom: 2rem;
+          padding: 1.5rem;
         }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="number"],
-        .form-group select {
-            width: calc(100% - 20px);
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 1em;
-            box-sizing: border-box; /* Ensures padding doesn't increase total width */
-        }
-
         button {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            margin-top: 1rem;
+          padding: 10px 20px;
         }
-
-        button:hover {
-            background-color: #1976D2; /* Darker blue */
-        }
-
-        #results {
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 2rem;
-        }
-
-        #results h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .result-item {
-            background-color: #f0fcf0;
-            border-left: 5px solid var(--primary-color);
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
-
-        .result-item strong {
-            color: #333;
-        }
-
-        .affordability-score {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background-color: #e0f2f7;
-            border-radius: 8px;
-            border: 1px solid #90CAF9;
-        }
-
-        .affordability-score h3 {
-            color: #1A237E;
-            margin-bottom: 0.8rem;
-        }
-
-        .affordability-score .score {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .affordability-score .feedback {
-            font-size: 1.2em;
-            margin-top: 0.5rem;
-            color: #444;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 1rem;
-            margin-top: 3rem;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Language Selector */
-        .language-selector {
-            text-align: right;
-            padding: 10px 1.5rem;
-            background-color: #eee;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .language-selector select {
-            padding: 5px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-            .container {
-                margin: 1rem auto;
-                padding: 0 1rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            button {
-                padding: 10px 20px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="language-selector">
-        <select id="languageSelect">
-            <option value="auto">Auto-detect</option>
-            <option value="en">English</option>
-            <option value="ko">한국어</option>
-            <option value="es">Español</option>
-            <option value="ar">العربية</option>
-            <option value="ru">Русский</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-        </select>
+      <select id="languageSelect">
+        <option value="auto">Auto-detect</option>
+        <option value="en">English</option>
+        <option value="ko">한국어</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+        <option value="ru">Русский</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
     </div>
 
     <header>
-        <h1 data-key="headerTitle">RentSavvy AI</h1>
-        <p data-key="headerSubtitle">Your Global Rent & Living Cost Predictor</p>
+      <h1 data-key="headerTitle">RentSavvy AI</h1>
+      <p data-key="headerSubtitle">Your Global Rent & Living Cost Predictor</p>
     </header>
 
     <main class="container">
-        <section class="card">
-            <h2 data-key="sectionTitle">Find Your Ideal Living Spot</h2>
-            <p data-key="sectionDescription">Enter your details to get personalized insights into rent and living costs worldwide.</p>
+      <section class="card">
+        <h2 data-key="sectionTitle">Find Your Ideal Living Spot</h2>
+        <p data-key="sectionDescription">
+          Enter your details to get personalized insights into rent and living
+          costs worldwide.
+        </p>
 
-            <form id="rentPredictorForm">
-                <div class="form-group">
-                    <label for="country" data-key="labelCountry">Country:</label>
-                    <select id="country" required>
-                        <option value="">Select a Country</option>
-                        <option value="us">United States</option>
-                        <option value="kr">South Korea</option>
-                        <option value="jp">Japan</option>
-                        <option value="es">Spain</option>
-                        <option value="ae">United Arab Emirates</option>
-                        <option value="ru">Russia</option>
-                        <option value="cn">China</option>
-                        </select>
-                </div>
+        <form id="rentPredictorForm">
+          <div class="form-group">
+            <label for="country" data-key="labelCountry">Country:</label>
+            <select id="country" required>
+              <option value="">Select a Country</option>
+              <option value="us">United States</option>
+              <option value="kr">South Korea</option>
+              <option value="jp">Japan</option>
+              <option value="es">Spain</option>
+              <option value="ae">United Arab Emirates</option>
+              <option value="ru">Russia</option>
+              <option value="cn">China</option>
+            </select>
+          </div>
 
-                <div class="form-group">
-                    <label for="city" data-key="labelCity">City (Optional):</label>
-                    <input type="text" id="city" placeholder="e.g., New York, Seoul, Tokyo">
-                </div>
+          <div class="form-group">
+            <label for="city" data-key="labelCity">City (Optional):</label>
+            <input
+              type="text"
+              id="city"
+              placeholder="e.g., New York, Seoul, Tokyo"
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="income" data-key="labelAnnualIncome">Annual Gross Income (Local Currency):</label>
-                    <input type="number" id="income" placeholder="e.g., 50000" min="0" required>
-                </div>
+          <div class="form-group">
+            <label for="income" data-key="labelAnnualIncome"
+              >Annual Gross Income (Local Currency):</label
+            >
+            <input
+              type="number"
+              id="income"
+              placeholder="e.g., 50000"
+              min="0"
+              required
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="currency" data-key="labelCurrency">Currency:</label>
-                    <select id="currency">
-                        <option value="USD">USD</option>
-                        <option value="KRW">KRW</option>
-                        <option value="JPY">JPY</option>
-                        <option value="EUR">EUR</option>
-                        <option value="AED">AED</option>
-                        <option value="RUB">RUB</option>
-                        <option value="CNY">CNY</option>
-                    </select>
-                </div>
+          <div class="form-group">
+            <label for="currency" data-key="labelCurrency">Currency:</label>
+            <select id="currency">
+              <option value="USD">USD</option>
+              <option value="KRW">KRW</option>
+              <option value="JPY">JPY</option>
+              <option value="EUR">EUR</option>
+              <option value="AED">AED</option>
+              <option value="RUB">RUB</option>
+              <option value="CNY">CNY</option>
+            </select>
+          </div>
 
-                <div class="form-group">
-                    <label for="familySize" data-key="labelFamilySize">Family Size:</label>
-                    <input type="number" id="familySize" value="1" min="1" required>
-                </div>
+          <div class="form-group">
+            <label for="familySize" data-key="labelFamilySize"
+              >Family Size:</label
+            >
+            <input type="number" id="familySize" value="1" min="1" required />
+          </div>
 
-                <button type="submit" data-key="predictButton">Predict My Costs</button>
-            </form>
-        </section>
+          <button type="submit" data-key="predictButton">
+            Predict My Costs
+          </button>
+        </form>
+      </section>
 
-        <section id="results" class="card" style="display: none;">
-            <h2 data-key="resultsTitle">Your Personalized Rent & Living Cost Insights</h2>
-            <div class="affordability-score">
-                <h3 data-key="affordabilityScoreTitle">Your Rent Affordability Index:</h3>
-                <p class="score" id="affordabilityScore">-</p>
-                <p class="feedback" id="affordabilityFeedback" data-key="affordabilityFeedbackPlaceholder"></p>
-            </div>
+      <section id="results" class="card" style="display: none">
+        <h2 data-key="resultsTitle">
+          Your Personalized Rent & Living Cost Insights
+        </h2>
+        <div class="affordability-score">
+          <h3 data-key="affordabilityScoreTitle">
+            Your Rent Affordability Index:
+          </h3>
+          <p class="score" id="affordabilityScore">-</p>
+          <p
+            class="feedback"
+            id="affordabilityFeedback"
+            data-key="affordabilityFeedbackPlaceholder"
+          ></p>
+        </div>
 
-            <div class="result-item">
-                <strong data-key="estimatedRent">Estimated Monthly Rent:</strong> <span id="estimatedRent">-</span>
-            </div>
-            <div class="result-item">
-                <strong data-key="recommendedRentPercentage">Recommended Rent Percentage of Income:</strong> <span id="recommendedRentPercentage">-</span>
-            </div>
-            <div class="result-item">
-                <strong data-key="estimatedMonthlyLiving">Estimated Monthly Living Expenses (excl. Rent):</strong> <span id="estimatedLivingExpenses">-</span>
-            </div>
-            <div class="result-item">
-                <strong data-key="totalMonthlyCost">Total Estimated Monthly Cost:</strong> <span id="totalMonthlyCost">-</span>
-            </div>
-            <div class="result-item" id="localHousingInfo" style="display: none;">
-                <strong data-key="localHousingDetails">Local Housing Details:</strong> <span id="localHousingDetailsContent"></span>
-            </div>
-            <div class="result-item">
-                <strong data-key="disclaimer">Disclaimer:</strong> <span data-key="disclaimerContent">These are AI-generated estimates and may vary based on market conditions, personal lifestyle, and specific location within a city.</span>
-            </div>
-        </section>
+        <div class="result-item">
+          <strong data-key="estimatedRent">Estimated Monthly Rent:</strong>
+          <span id="estimatedRent">-</span>
+        </div>
+        <div class="result-item">
+          <strong data-key="recommendedRentPercentage"
+            >Recommended Rent Percentage of Income:</strong
+          >
+          <span id="recommendedRentPercentage">-</span>
+        </div>
+        <div class="result-item">
+          <strong data-key="estimatedMonthlyLiving"
+            >Estimated Monthly Living Expenses (excl. Rent):</strong
+          >
+          <span id="estimatedLivingExpenses">-</span>
+        </div>
+        <div class="result-item">
+          <strong data-key="totalMonthlyCost"
+            >Total Estimated Monthly Cost:</strong
+          >
+          <span id="totalMonthlyCost">-</span>
+        </div>
+        <div class="result-item" id="localHousingInfo" style="display: none">
+          <strong data-key="localHousingDetails">Local Housing Details:</strong>
+          <span id="localHousingDetailsContent"></span>
+        </div>
+        <div class="result-item">
+          <strong data-key="disclaimer">Disclaimer:</strong>
+          <span data-key="disclaimerContent"
+            >These are AI-generated estimates and may vary based on market
+            conditions, personal lifestyle, and specific location within a
+            city.</span
+          >
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 RentSavvy AI. All rights reserved.</p>
-        <p>
-            <a href="#" data-key="privacyPolicy">Privacy Policy</a> |
-            <a href="#" data-key="termsOfService">Terms of Service</a> |
-            <a href="#" data-key="contactUs">Contact Us</a>
-        </p>
+      <p>&copy; 2025 RentSavvy AI. All rights reserved.</p>
+      <p>
+        <a href="#" data-key="privacyPolicy">Privacy Policy</a> |
+        <a href="#" data-key="termsOfService">Terms of Service</a> |
+        <a href="#" data-key="contactUs">Contact Us</a>
+      </p>
     </footer>
 
     <script>
-        const translations = {
-            'en': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: 'Your Global Rent & Living Cost Predictor',
-                sectionTitle: 'Find Your Ideal Living Spot',
-                sectionDescription: 'Enter your details to get personalized insights into rent and living costs worldwide.',
-                labelCountry: 'Country:',
-                labelCity: 'City (Optional):',
-                labelAnnualIncome: 'Annual Gross Income (Local Currency):',
-                labelCurrency: 'Currency:',
-                labelFamilySize: 'Family Size:',
-                predictButton: 'Predict My Costs',
-                resultsTitle: 'Your Personalized Rent & Living Cost Insights',
-                affordabilityScoreTitle: 'Your Rent Affordability Index:',
-                affordabilityFeedbackPlaceholder: 'Your affordability feedback will appear here.',
-                estimatedRent: 'Estimated Monthly Rent:',
-                recommendedRentPercentage: 'Recommended Rent Percentage of Income:',
-                estimatedMonthlyLiving: 'Estimated Monthly Living Expenses (excl. Rent):',
-                totalMonthlyCost: 'Total Estimated Monthly Cost:',
-                localHousingDetails: 'Local Housing Details:',
-                disclaimer: 'Disclaimer:',
-                disclaimerContent: 'These are AI-generated estimates and may vary based on market conditions, personal lifestyle, and specific location within a city.',
-                privacyPolicy: 'Privacy Policy',
-                termsOfService: 'Terms of Service',
-                contactUs: 'Contact Us',
-                selectCountry: 'Select a Country',
-                feedbackExcellent: 'Excellent! You should live comfortably in this region.',
-                feedbackGood: 'Good! You should be able to manage your expenses well.',
-                feedbackFair: 'Fair. You might need to budget carefully or consider other options.',
-                feedbackPoor: 'Poor. Living here might be challenging with your current income.',
-                feedbackVeryPoor: 'Very Poor. It is highly recommended to reconsider your options or increase income.',
-                localInfoKR: 'In Korea, "Jeonse" (lump-sum deposit) is common, where a large deposit is paid instead of monthly rent. Monthly rent (Wolse) often requires a significant deposit too. A common recommendation is to keep rent below 25% of your net income.',
-                localInfoJP: 'In Japan, "Reikin" (key money) and "Shikikin" (security deposit) are typically required upfront, often totaling 3-6 months\' rent. Monthly rent can be a significant portion of income, often recommended below 30%.',
-                localInfoES: 'In Spain, landlords usually require a 1-2 month security deposit. Rental contracts are typically for a minimum of one year. Rent often accounts for 30-35% of income.',
-                localInfoAE: 'In the UAE, rents are often paid in 1 to 4 post-dated cheques for the year. It\'s crucial to account for utilities and other living expenses which can be high. Rent can be up to 40% of income.',
-                localInfoRU: 'In Russia, apartment rental involves a security deposit, usually one month\'s rent. Utility payments are often separate. Rent generally takes up 25-35% of income.',
-                localInfoCN: 'In China, a deposit (usually 1-2 months\' rent) and advance rent (often 3 months) are common. Property agents are widely used. Rent can be 30-40% of income.',
-                localInfoUS: 'In the US, security deposits (typically 1-2 months\' rent) are common. Rent is often recommended to be no more than 30% of gross income, though this can be higher in expensive cities.',
-            },
-            'ko': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: '전 세계 임대료 & 생활비 예측기',
-                sectionTitle: '이상적인 거주지 찾기',
-                sectionDescription: '전 세계 임대료와 생활비에 대한 개인화된 통찰력을 얻기 위해 세부 정보를 입력하세요.',
-                labelCountry: '국가:',
-                labelCity: '도시 (선택 사항):',
-                labelAnnualIncome: '연간 총 소득 (현지 통화):',
-                labelCurrency: '통화:',
-                labelFamilySize: '가족 구성원 수:',
-                predictButton: '비용 예측하기',
-                resultsTitle: '개인 맞춤형 임대료 & 생활비 정보',
-                affordabilityScoreTitle: '당신의 임대료 감당력 지수:',
-                affordabilityFeedbackPlaceholder: '당신의 감당력 피드백이 여기에 표시됩니다.',
-                estimatedRent: '예상 월 임대료:',
-                recommendedRentPercentage: '권장 소득 대비 임대료 비율:',
-                estimatedMonthlyLiving: '예상 월 생활비 (임대료 제외):',
-                totalMonthlyCost: '총 예상 월 비용:',
-                localHousingDetails: '현지 주거 정보:',
-                disclaimer: '면책 조항:',
-                disclaimerContent: '이것은 AI가 생성한 추정치이며, 시장 상황, 개인 생활 방식 및 도시 내 특정 위치에 따라 달라질 수 있습니다.',
-                privacyPolicy: '개인정보처리방침',
-                termsOfService: '이용약관',
-                contactUs: '문의하기',
-                selectCountry: '국가 선택',
-                feedbackExcellent: '훌륭합니다! 이 지역에서 편안하게 생활하실 수 있습니다.',
-                feedbackGood: '좋습니다! 지출을 잘 관리하실 수 있을 것입니다.',
-                feedbackFair: '보통입니다. 신중하게 예산을 책정하거나 다른 옵션을 고려해야 할 수 있습니다.',
-                feedbackPoor: '나쁨. 현재 소득으로는 이곳에서 생활하기가 어려울 수 있습니다.',
-                feedbackVeryPoor: '매우 나쁨. 옵션을 재고하거나 소득을 늘리는 것을 강력히 권장합니다.',
-                localInfoKR: '한국에서는 월세 대신 큰 보증금을 내는 "전세"가 일반적입니다. 월세도 상당한 보증금을 요구하는 경우가 많습니다. 일반적으로 순소득의 25% 미만으로 월세를 유지하는 것이 권장됩니다.',
-                localInfoJP: '일본에서는 "레이킨"(사례금)과 "시키킹"(보증금)이 초기 비용으로 일반적으로 요구되며, 종종 월세의 3~6개월분에 달합니다. 월세는 소득의 상당 부분을 차지할 수 있으며, 보통 30% 미만이 권장됩니다.',
-                localInfoES: '스페인에서는 집주인이 보통 1~2개월치 보증금을 요구합니다. 임대 계약은 일반적으로 최소 1년입니다. 임대료는 종종 소득의 30~35%를 차지합니다.',
-                localInfoAE: '아랍에미리트에서는 임대료를 보통 1년에 걸쳐 1~4개의 선일자 수표로 지불합니다. 공과금 및 기타 생활비가 높을 수 있으므로 이를 고려하는 것이 중요합니다. 임대료는 소득의 최대 40%까지 될 수 있습니다.',
-                localInfoRU: '러시아에서 아파트 임대는 보증금(보통 월세 1개월분)을 포함합니다. 공과금은 별도로 지불하는 경우가 많습니다. 임대료는 일반적으로 소득의 25~35%를 차지합니다.',
-                localInfoCN: '중국에서는 보증금(보통 월세 1~2개월분)과 선불 임대료(종종 3개월분)가 일반적입니다. 부동산 중개인이 널리 사용됩니다. 임대료는 소득의 30~40%를 차지할 수 있습니다.',
-                localInfoUS: '미국에서는 보증금(보통 월세 1~2개월분)이 일반적입니다. 임대료는 총 소득의 30%를 넘지 않는 것이 권장되지만, 비싼 도시에서는 더 높을 수 있습니다.',
-            },
-            'es': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: 'Tu Predictor Global de Alquiler y Costo de Vida',
-                sectionTitle: 'Encuentra Tu Lugar de Vida Ideal',
-                sectionDescription: 'Ingresa tus datos para obtener información personalizada sobre el alquiler y los costos de vida en todo el mundo.',
-                labelCountry: 'País:',
-                labelCity: 'Ciudad (Opcional):',
-                labelAnnualIncome: 'Ingresos Brutos Anuales (Moneda Local):',
-                labelCurrency: 'Moneda:',
-                labelFamilySize: 'Tamaño de la Familia:',
-                predictButton: 'Predecir Mis Costos',
-                resultsTitle: 'Tus Perspectivas Personalizadas de Alquiler y Costo de Vida',
-                affordabilityScoreTitle: 'Tu Índice de Asequibilidad de Alquiler:',
-                affordabilityFeedbackPlaceholder: 'Tus comentarios de asequibilidad aparecerán aquí.',
-                estimatedRent: 'Alquiler Mensual Estimado:',
-                recommendedRentPercentage: 'Porcentaje de Alquiler Recomendado de Ingresos:',
-                estimatedMonthlyLiving: 'Gastos de Vida Mensuales Estimados (sin alquiler):',
-                totalMonthlyCost: 'Costo Mensual Total Estimado:',
-                localHousingDetails: 'Detalles de Vivienda Local:',
-                disclaimer: 'Descargo de responsabilidad:',
-                disclaimerContent: 'Estas son estimaciones generadas por IA y pueden variar según las condiciones del mercado, el estilo de vida personal y la ubicación específica dentro de una ciudad.',
-                privacyPolicy: 'Política de Privacidad',
-                termsOfService: 'Términos de Servicio',
-                contactUs: 'Contáctanos',
-                selectCountry: 'Selecciona un País',
-                feedbackExcellent: '¡Excelente! Deberías vivir cómodamente en esta región.',
-                feedbackGood: '¡Bien! Deberías poder manejar bien tus gastos.',
-                feedbackFair: 'Regular. Es posible que debas presupuestar cuidadosamente o considerar otras opciones.',
-                feedbackPoor: 'Malo. Vivir aquí podría ser un desafío con tus ingresos actuales.',
-                feedbackVeryPoor: 'Muy malo. Se recomienda encarecidamente reconsiderar tus opciones o aumentar los ingresos.',
-                localInfoKR: 'En Corea, el "Jeonse" (depósito global) es común, donde se paga un gran depósito en lugar del alquiler mensual. El alquiler mensual (Wolse) a menudo también requiere un depósito significativo. Una recomendación común es mantener el alquiler por debajo del 25% de tus ingresos netos.',
-                localInfoJP: 'En Japón, generalmente se requieren "Reikin" (dinero clave) y "Shikikin" (depósito de seguridad) por adelantado, a menudo sumando de 3 a 6 meses de alquiler. El alquiler mensual puede ser una porción significativa de los ingresos, a menudo se recomienda que sea inferior al 30%.',
-                localInfoES: 'En España, los propietarios suelen exigir un depósito de seguridad de 1 a 2 meses. Los contratos de alquiler suelen ser por un mínimo de un año. El alquiler a menudo representa entre el 30% y el 35% de los ingresos.',
-                localInfoAE: 'En los EAU, los alquileres a menudo se pagan con 1 a 4 cheques posfechados por el año. Es crucial tener en cuenta los servicios públicos y otros gastos de vida que pueden ser altos. El alquiler puede ser hasta el 40% de los ingresos.',
-                localInfoRU: 'En Rusia, el alquiler de apartamentos implica un depósito de seguridad, generalmente el alquiler de un mes. Los pagos de servicios públicos a menudo son separados. El alquiler generalmente ocupa el 25-35% de los ingresos.',
-                localInfoCN: 'En China, es común un depósito (generalmente de 1 a 2 meses de alquiler) y un alquiler anticipado (a menudo de 3 meses). Los agentes inmobiliarios son muy utilizados. El alquiler puede ser del 30% al 40% de los ingresos.',
-                localInfoUS: 'En EE. UU., los depósitos de seguridad (típicamente de 1 a 2 meses de alquiler) son comunes. A menudo se recomienda que el alquiler no supere el 30% de los ingresos brutos, aunque esto puede ser mayor en ciudades caras.',
-            },
-            'ar': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: 'توقع إيجارك وتكاليف معيشتك العالمية',
-                sectionTitle: 'ابحث عن مكان إقامتك المثالي',
-                sectionDescription: 'أدخل التفاصيل الخاصة بك للحصول على رؤى مخصصة حول الإيجار وتكاليف المعيشة في جميع أنحاء العالم.',
-                labelCountry: 'البلد:',
-                labelCity: 'المدينة (اختياري):',
-                labelAnnualIncome: 'الدخل السنوي الإجمالي (العملة المحلية):',
-                labelCurrency: 'العملة:',
-                labelFamilySize: 'حجم الأسرة:',
-                predictButton: 'توقع تكاليفي',
-                resultsTitle: 'رؤى إيجارك وتكاليف معيشتك المخصصة',
-                affordabilityScoreTitle: 'مؤشر القدرة على تحمل الإيجار الخاص بك:',
-                affordabilityFeedbackPlaceholder: 'ستظهر ملاحظاتك حول القدرة على تحمل التكاليف هنا.',
-                estimatedRent: 'الإيجار الشهري المقدر:',
-                recommendedRentPercentage: 'النسبة الموصى بها للإيجار من الدخل:',
-                estimatedMonthlyLiving: 'المصاريف المعيشية الشهرية المقدرة (باستثناء الإيجار):',
-                totalMonthlyCost: 'إجمالي التكلفة الشهرية المقدرة:',
-                localHousingDetails: 'تفاصيل السكن المحلي:',
-                disclaimer: 'إخلاء المسؤولية:',
-                disclaimerContent: 'هذه تقديرات تم إنشاؤها بواسطة الذكاء الاصطناعي وقد تختلف بناءً على ظروف السوق ونمط الحياة الشخصي والموقع المحدد داخل المدينة.',
-                privacyPolicy: 'سياسة الخصوصية',
-                termsOfService: 'شروط الخدمة',
-                contactUs: 'اتصل بنا',
-                selectCountry: 'اختر دولة',
-                feedbackExcellent: 'ممتاز! يجب أن تعيش بشكل مريح في هذه المنطقة.',
-                feedbackGood: 'جيد! يجب أن تكون قادرًا على إدارة نفقاتك بشكل جيد.',
-                feedbackFair: 'عادل. قد تحتاج إلى الميزانية بعناية أو النظر في خيارات أخرى.',
-                feedbackPoor: 'ضعيف. قد يكون العيش هنا تحديًا بدخلك الحالي.',
-                feedbackVeryPoor: 'ضعيف جدًا. يوصى بشدة بإعادة النظر في خياراتك أو زيادة الدخل.',
-                localInfoKR: 'في كوريا، "جيونسي" (إيداع دفعة واحدة) شائع، حيث يتم دفع وديعة كبيرة بدلاً من الإيجار الشهري. غالبًا ما يتطلب الإيجار الشهري (ولسي) وديعة كبيرة أيضًا. التوصية الشائعة هي إبقاء الإيجار أقل من 25% من دخلك الصافي.',
-                localInfoJP: 'في اليابان، عادة ما يتطلب "ريكيين" (رسوم مفتاح) و"شيكيكين" (وديعة ضمان) مقدمًا، وغالبًا ما يصل إجماليها إلى 3-6 أشهر من الإيجار. يمكن أن يمثل الإيجار الشهري جزءًا كبيرًا من الدخل، وغالبًا ما يوصى بأن يكون أقل من 30%.',
-                localInfoES: 'في إسبانيا، يطلب أصحاب العقارات عادة وديعة تأمين لمدة شهر إلى شهرين. عادة ما تكون عقود الإيجار لمدة عام واحد على الأقل. يمثل الإيجار غالبًا 30-35% من الدخل.',
-                localInfoAE: 'في الإمارات العربية المتحدة، غالبًا ما يتم دفع الإيجارات بـ 1 إلى 4 شيكات مؤجلة للعام. من الأهمية بمكان مراعاة فواتير الخدمات ونفقات المعيشة الأخرى التي يمكن أن تكون مرتفعة. يمكن أن يصل الإيجار إلى 40% من الدخل.',
-                localInfoRU: 'في روسيا، يتضمن تأجير الشقق وديعة تأمين، عادة ما تكون إيجار شهر واحد. غالبًا ما تكون مدفوعات المرافق منفصلة. يشغل الإيجار عمومًا 25-35% من الدخل.',
-                localInfoCN: 'في الصين، الوديعة (عادة إيجار شهر إلى شهرين) والإيجار المسبق (غالبًا 3 أشهر) شائعان. يستخدم وكلاء العقارات على نطاق واسع. يمكن أن يكون الإيجار 30-40% من الدخل.',
-                localInfoUS: 'في الولايات المتحدة، الودائع التأمينية (عادة إيجار شهر إلى شهرين) شائعة. يوصى غالبًا بأن لا يتجاوز الإيجار 30% من إجمالي الدخل، على الرغم من أن هذا قد يكون أعلى في المدن باهظة الثمن.',
-            },
-            'ru': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: 'Ваш глобальный предсказатель арендной платы и стоимости жизни',
-                sectionTitle: 'Найдите свое идеальное место для жизни',
-                sectionDescription: 'Введите свои данные, чтобы получить персонализированную информацию об арендной плате и стоимости жизни по всему миру.',
-                labelCountry: 'Страна:',
-                labelCity: 'Город (Необязательно):',
-                labelAnnualIncome: 'Годовой валовой доход (местная валюта):',
-                labelCurrency: 'Валюта:',
-                labelFamilySize: 'Размер семьи:',
-                predictButton: 'Рассчитать мои расходы',
-                resultsTitle: 'Ваши персонализированные данные по аренде и стоимости жизни',
-                affordabilityScoreTitle: 'Ваш индекс доступности аренды:',
-                affordabilityFeedbackPlaceholder: 'Ваш отзыв о доступности появится здесь.',
-                estimatedRent: 'Примерная месячная арендная плата:',
-                recommendedRentPercentage: 'Рекомендуемый процент аренды от дохода:',
-                estimatedMonthlyLiving: 'Примерные ежемесячные расходы на проживание (без аренды):',
-                totalMonthlyCost: 'Общая примерная месячная стоимость:',
-                localHousingDetails: 'Информация о местном жилье:',
-                disclaimer: 'Отказ от ответственности:',
-                disclaimerContent: 'Это оценки, сгенерированные ИИ, и они могут варьироваться в зависимости от рыночных условий, личного образа жизни и конкретного местоположения в городе.',
-                privacyPolicy: 'Политика конфиденциальности',
-                termsOfService: 'Условия использования',
-                contactUs: 'Связаться с нами',
-                selectCountry: 'Выберите страну',
-                feedbackExcellent: 'Отлично! Вы должны комфортно жить в этом регионе.',
-                feedbackGood: 'Хорошо! Вы сможете хорошо управлять своими расходами.',
-                feedbackFair: 'Удовлетворительно. Вам может потребоваться тщательно планировать бюджет или рассмотреть другие варианты.',
-                feedbackPoor: 'Плохо. Проживание здесь может быть сложным при вашем текущем доходе.',
-                feedbackVeryPoor: 'Очень плохо. Настоятельно рекомендуется пересмотреть свои варианты или увеличить доход.',
-                localInfoKR: 'В Корее распространен "Чонсе" (Jeonse - единовременный депозит), когда вместо ежемесячной арендной платы вносится крупный депозит. Ежемесячная арендная плата (Вольсе) также часто требует значительного депозита. Распространенная рекомендация - поддерживать арендную плату ниже 25% от вашего чистого дохода.',
-                localInfoJP: 'В Японии обычно требуется "Рейкин" (Reikin - ключевые деньги) и "Шикикин" (Shikikin - залог) заранее, часто составляющие 3-6 месяцев арендной платы. Ежемесячная арендная плата может составлять значительную часть дохода, часто рекомендуется ниже 30%.',
-                localInfoES: 'В Испании арендодатели обычно требуют залог в размере 1-2 месяцев. Договоры аренды обычно заключаются минимум на один год. Арендная плата часто составляет 30-35% от дохода.',
-                localInfoAE: 'В ОАЭ арендная плата часто оплачивается 1–4 чеками с отложенной датой на год. Крайне важно учитывать коммунальные услуги и другие расходы на проживание, которые могут быть высокими. Арендная плата может составлять до 40% дохода.',
-                localInfoRU: 'В России аренда квартиры предполагает внесение залога, обычно в размере месячной арендной платы. Коммунальные платежи часто оплачиваются отдельно. Арендная плата обычно занимает 25-35% от дохода.',
-                localInfoCN: 'В Китае распространены залог (обычно 1-2 месяца арендной платы) и предоплата аренды (часто 3 месяца). Широко используются агенты по недвижимости. Арендная плата может составлять 30-40% от дохода.',
-                localInfoUS: 'В США распространены страховые депозиты (обычно 1-2 месяца аренды). Часто рекомендуется, чтобы арендная плата не превышала 30% от валового дохода, хотя в дорогих городах этот показатель может быть выше.',
-            },
-            'ja': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: '世界中の家賃と生活費を予測するAI',
-                sectionTitle: '理想の住まいを見つける',
-                sectionDescription: '世界中の家賃と生活費に関するパーソナライズされた洞察を得るために、詳細を入力してください。',
-                labelCountry: '国:',
-                labelCity: '都市 (任意):',
-                labelAnnualIncome: '年間総収入 (現地通貨):',
-                labelCurrency: '通貨:',
-                labelFamilySize: '家族構成:',
-                predictButton: '費用を予測する',
-                resultsTitle: 'あなたに合わせた家賃と生活費の洞察',
-                affordabilityScoreTitle: 'あなたの家賃負担能力指数:',
-                affordabilityFeedbackPlaceholder: '家賃負担能力に関するフィードバックがここに表示されます。',
-                estimatedRent: '推定月額家賃:',
-                recommendedRentPercentage: '推奨される収入に対する家賃の割合:',
-                estimatedMonthlyLiving: '推定月額生活費 (家賃を除く):',
-                totalMonthlyCost: '推定合計月額費用:',
-                localHousingDetails: '現地の住宅情報:',
-                disclaimer: '免責事項:',
-                disclaimerContent: 'これらはAIが生成した推定値であり、市場状況、個人のライフスタイル、および都市内の特定の場所によって異なる場合があります。',
-                privacyPolicy: 'プライバシーポリシー',
-                termsOfService: '利用規約',
-                contactUs: 'お問い合わせ',
-                selectCountry: '国を選択してください',
-                feedbackExcellent: '素晴らしい！この地域で快適に暮らせるでしょう。',
-                feedbackGood: '良好！支出をうまく管理できるでしょう。',
-                feedbackFair: '普通。慎重に予算を組むか、他の選択肢を検討する必要があるかもしれません。',
-                feedbackPoor: '悪い。現在の収入では、ここで生活するのは難しいかもしれません。',
-                feedbackVeryPoor: '非常に悪い。選択肢を再検討するか、収入を増やすことを強くお勧めします。',
-                localInfoKR: '韓国では、「チョンセ」（保証金一括払い）が一般的で、月々の家賃の代わりに高額な保証金を支払います。月々の家賃（ウォルセ）もかなりの保証金を必要とすることがよくあります。一般的には、純収入の25%未満に家賃を抑えることが推奨されます。',
-                localInfoJP: '日本では、「礼金」と「敷金」が初期費用として一般的に必要とされ、合計で家賃の3〜6ヶ月分になることがよくあります。月額家賃は収入のかなりの部分を占める可能性があり、通常は30%未満が推奨されます。',
-                localInfoES: 'スペインでは、家主は通常1〜2ヶ月分の保証金を要求します。賃貸契約は通常、最低1年間です。家賃は収入の30〜35%を占めることが多いです。',
-                localInfoAE: 'アラブ首長国連邦では、家賃は年間1〜4枚の振り出し日を過ぎた小切手で支払われることがよくあります。光熱費やその他の生活費が高額になる可能性があるため、それらを考慮することが重要です。家賃は収入の最大40%になることがあります。',
-                localInfoRU: 'ロシアでは、アパートの賃貸には保証金（通常1ヶ月分の家賃）が必要です。公共料金は別途支払うことが多いです。家賃は通常、収入の25〜35%を占めます。',
-                localInfoCN: '中国では、敷金（通常家賃の1〜2ヶ月分）と前払い家賃（しばしば3ヶ月分）が一般的です。不動産仲介業者が広く利用されています。家賃は収入の30〜40%になることがあります。',
-                localInfoUS: '米国では、敷金（通常家賃の1〜2ヶ月分）が一般的です。家賃は通常、総収入の30%を超えないことが推奨されますが、高価な都市ではこれ以上になることもあります。',
-            },
-            'zh': {
-                headerTitle: 'RentSavvy AI',
-                headerSubtitle: '您的全球租金和生活成本预测器',
-                sectionTitle: '找到您理想的居住地',
-                sectionDescription: '输入您的详细信息，以获取全球租金和生活成本的个性化见解。',
-                labelCountry: '国家/地区:',
-                labelCity: '城市 (可选):',
-                labelAnnualIncome: '年总收入 (当地货币):',
-                labelCurrency: '货币:',
-                labelFamilySize: '家庭人数:',
-                predictButton: '预测我的费用',
-                resultsTitle: '您的个性化租金和生活成本洞察',
-                affordabilityScoreTitle: '您的租金承受能力指数:',
-                affordabilityFeedbackPlaceholder: '您的承受能力反馈将显示在此处。',
-                estimatedRent: '预计月租金:',
-                recommendedRentPercentage: '推荐的收入租金百分比:',
-                estimatedMonthlyLiving: '预计每月生活开销 (不含租金):',
-                totalMonthlyCost: '总计预计每月费用:',
-                localHousingDetails: '当地住房详情:',
-                disclaimer: '免责声明:',
-                disclaimerContent: '这些是AI生成的估计值，可能因市场状况、个人生活方式和城市内的具体位置而异。',
-                privacyPolicy: '隐私政策',
-                termsOfService: '服务条款',
-                contactUs: '联系我们',
-                selectCountry: '选择国家/地区',
-                feedbackExcellent: '太棒了！您应该能在这个地区舒适地生活。',
-                feedbackGood: '良好！您应该能够很好地管理您的开支。',
-                feedbackFair: '一般。您可能需要仔细预算或考虑其他选择。',
-                feedbackPoor: '差。以您目前的收入在这里生活可能具有挑战性。',
-                feedbackVeryPoor: '非常差。强烈建议您重新考虑您的选择或增加收入。',
-                localInfoKR: '在韩国，"全租" (Jeonse，一次性押金) 很常见，即支付一大笔押金而不是月租。月租 (Wolse) 也常需要大笔押金。一般建议将租金保持在净收入的25%以下。',
-                localInfoJP: '在日本，通常需要预付"礼金" (Reikin，感谢金) 和"敷金" (Shikikin，押金)，总计通常为3-6个月的租金。月租金可能占收入的很大一部分，通常建议低于30%。',
-                localInfoES: '在西班牙，房东通常要求1-2个月的押金。租赁合同通常至少一年。租金通常占收入的30-35%。',
-                localInfoAE: '在阿联酋，租金通常以1至4张远期支票支付一年。务必考虑水电费和其他生活开销，这些可能很高。租金可达收入的40%。',
-                localInfoRU: '在俄罗斯，公寓租赁需要支付押金，通常是一个月的租金。公用事业费用通常是分开支付的。租金通常占收入的25-35%。',
-                localInfoCN: '在中国，押金（通常是1-2个月的租金）和预付租金（通常是3个月）很常见。房地产中介被广泛使用。租金可以占收入的30-40%。',
-                localInfoUS: '在美国，押金（通常是1-2个月的租金）很常见。租金通常建议不超过总收入的30%，尽管在昂贵的城市可能会更高。',
-            }
-        };
+      const translations = {
+        en: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "Your Global Rent & Living Cost Predictor",
+          sectionTitle: "Find Your Ideal Living Spot",
+          sectionDescription:
+            "Enter your details to get personalized insights into rent and living costs worldwide.",
+          labelCountry: "Country:",
+          labelCity: "City (Optional):",
+          labelAnnualIncome: "Annual Gross Income (Local Currency):",
+          labelCurrency: "Currency:",
+          labelFamilySize: "Family Size:",
+          predictButton: "Predict My Costs",
+          resultsTitle: "Your Personalized Rent & Living Cost Insights",
+          affordabilityScoreTitle: "Your Rent Affordability Index:",
+          affordabilityFeedbackPlaceholder:
+            "Your affordability feedback will appear here.",
+          estimatedRent: "Estimated Monthly Rent:",
+          recommendedRentPercentage: "Recommended Rent Percentage of Income:",
+          estimatedMonthlyLiving:
+            "Estimated Monthly Living Expenses (excl. Rent):",
+          totalMonthlyCost: "Total Estimated Monthly Cost:",
+          localHousingDetails: "Local Housing Details:",
+          disclaimer: "Disclaimer:",
+          disclaimerContent:
+            "These are AI-generated estimates and may vary based on market conditions, personal lifestyle, and specific location within a city.",
+          privacyPolicy: "Privacy Policy",
+          termsOfService: "Terms of Service",
+          contactUs: "Contact Us",
+          selectCountry: "Select a Country",
+          feedbackExcellent:
+            "Excellent! You should live comfortably in this region.",
+          feedbackGood:
+            "Good! You should be able to manage your expenses well.",
+          feedbackFair:
+            "Fair. You might need to budget carefully or consider other options.",
+          feedbackPoor:
+            "Poor. Living here might be challenging with your current income.",
+          feedbackVeryPoor:
+            "Very Poor. It is highly recommended to reconsider your options or increase income.",
+          localInfoKR:
+            'In Korea, "Jeonse" (lump-sum deposit) is common, where a large deposit is paid instead of monthly rent. Monthly rent (Wolse) often requires a significant deposit too. A common recommendation is to keep rent below 25% of your net income.',
+          localInfoJP:
+            'In Japan, "Reikin" (key money) and "Shikikin" (security deposit) are typically required upfront, often totaling 3-6 months\' rent. Monthly rent can be a significant portion of income, often recommended below 30%.',
+          localInfoES:
+            "In Spain, landlords usually require a 1-2 month security deposit. Rental contracts are typically for a minimum of one year. Rent often accounts for 30-35% of income.",
+          localInfoAE:
+            "In the UAE, rents are often paid in 1 to 4 post-dated cheques for the year. It's crucial to account for utilities and other living expenses which can be high. Rent can be up to 40% of income.",
+          localInfoRU:
+            "In Russia, apartment rental involves a security deposit, usually one month's rent. Utility payments are often separate. Rent generally takes up 25-35% of income.",
+          localInfoCN:
+            "In China, a deposit (usually 1-2 months' rent) and advance rent (often 3 months) are common. Property agents are widely used. Rent can be 30-40% of income.",
+          localInfoUS:
+            "In the US, security deposits (typically 1-2 months' rent) are common. Rent is often recommended to be no more than 30% of gross income, though this can be higher in expensive cities.",
+        },
+        ko: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "전 세계 임대료 & 생활비 예측기",
+          sectionTitle: "이상적인 거주지 찾기",
+          sectionDescription:
+            "전 세계 임대료와 생활비에 대한 개인화된 통찰력을 얻기 위해 세부 정보를 입력하세요.",
+          labelCountry: "국가:",
+          labelCity: "도시 (선택 사항):",
+          labelAnnualIncome: "연간 총 소득 (현지 통화):",
+          labelCurrency: "통화:",
+          labelFamilySize: "가족 구성원 수:",
+          predictButton: "비용 예측하기",
+          resultsTitle: "개인 맞춤형 임대료 & 생활비 정보",
+          affordabilityScoreTitle: "당신의 임대료 감당력 지수:",
+          affordabilityFeedbackPlaceholder:
+            "당신의 감당력 피드백이 여기에 표시됩니다.",
+          estimatedRent: "예상 월 임대료:",
+          recommendedRentPercentage: "권장 소득 대비 임대료 비율:",
+          estimatedMonthlyLiving: "예상 월 생활비 (임대료 제외):",
+          totalMonthlyCost: "총 예상 월 비용:",
+          localHousingDetails: "현지 주거 정보:",
+          disclaimer: "면책 조항:",
+          disclaimerContent:
+            "이것은 AI가 생성한 추정치이며, 시장 상황, 개인 생활 방식 및 도시 내 특정 위치에 따라 달라질 수 있습니다.",
+          privacyPolicy: "개인정보처리방침",
+          termsOfService: "이용약관",
+          contactUs: "문의하기",
+          selectCountry: "국가 선택",
+          feedbackExcellent:
+            "훌륭합니다! 이 지역에서 편안하게 생활하실 수 있습니다.",
+          feedbackGood: "좋습니다! 지출을 잘 관리하실 수 있을 것입니다.",
+          feedbackFair:
+            "보통입니다. 신중하게 예산을 책정하거나 다른 옵션을 고려해야 할 수 있습니다.",
+          feedbackPoor:
+            "나쁨. 현재 소득으로는 이곳에서 생활하기가 어려울 수 있습니다.",
+          feedbackVeryPoor:
+            "매우 나쁨. 옵션을 재고하거나 소득을 늘리는 것을 강력히 권장합니다.",
+          localInfoKR:
+            '한국에서는 월세 대신 큰 보증금을 내는 "전세"가 일반적입니다. 월세도 상당한 보증금을 요구하는 경우가 많습니다. 일반적으로 순소득의 25% 미만으로 월세를 유지하는 것이 권장됩니다.',
+          localInfoJP:
+            '일본에서는 "레이킨"(사례금)과 "시키킹"(보증금)이 초기 비용으로 일반적으로 요구되며, 종종 월세의 3~6개월분에 달합니다. 월세는 소득의 상당 부분을 차지할 수 있으며, 보통 30% 미만이 권장됩니다.',
+          localInfoES:
+            "스페인에서는 집주인이 보통 1~2개월치 보증금을 요구합니다. 임대 계약은 일반적으로 최소 1년입니다. 임대료는 종종 소득의 30~35%를 차지합니다.",
+          localInfoAE:
+            "아랍에미리트에서는 임대료를 보통 1년에 걸쳐 1~4개의 선일자 수표로 지불합니다. 공과금 및 기타 생활비가 높을 수 있으므로 이를 고려하는 것이 중요합니다. 임대료는 소득의 최대 40%까지 될 수 있습니다.",
+          localInfoRU:
+            "러시아에서 아파트 임대는 보증금(보통 월세 1개월분)을 포함합니다. 공과금은 별도로 지불하는 경우가 많습니다. 임대료는 일반적으로 소득의 25~35%를 차지합니다.",
+          localInfoCN:
+            "중국에서는 보증금(보통 월세 1~2개월분)과 선불 임대료(종종 3개월분)가 일반적입니다. 부동산 중개인이 널리 사용됩니다. 임대료는 소득의 30~40%를 차지할 수 있습니다.",
+          localInfoUS:
+            "미국에서는 보증금(보통 월세 1~2개월분)이 일반적입니다. 임대료는 총 소득의 30%를 넘지 않는 것이 권장되지만, 비싼 도시에서는 더 높을 수 있습니다.",
+        },
+        es: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "Tu Predictor Global de Alquiler y Costo de Vida",
+          sectionTitle: "Encuentra Tu Lugar de Vida Ideal",
+          sectionDescription:
+            "Ingresa tus datos para obtener información personalizada sobre el alquiler y los costos de vida en todo el mundo.",
+          labelCountry: "País:",
+          labelCity: "Ciudad (Opcional):",
+          labelAnnualIncome: "Ingresos Brutos Anuales (Moneda Local):",
+          labelCurrency: "Moneda:",
+          labelFamilySize: "Tamaño de la Familia:",
+          predictButton: "Predecir Mis Costos",
+          resultsTitle:
+            "Tus Perspectivas Personalizadas de Alquiler y Costo de Vida",
+          affordabilityScoreTitle: "Tu Índice de Asequibilidad de Alquiler:",
+          affordabilityFeedbackPlaceholder:
+            "Tus comentarios de asequibilidad aparecerán aquí.",
+          estimatedRent: "Alquiler Mensual Estimado:",
+          recommendedRentPercentage:
+            "Porcentaje de Alquiler Recomendado de Ingresos:",
+          estimatedMonthlyLiving:
+            "Gastos de Vida Mensuales Estimados (sin alquiler):",
+          totalMonthlyCost: "Costo Mensual Total Estimado:",
+          localHousingDetails: "Detalles de Vivienda Local:",
+          disclaimer: "Descargo de responsabilidad:",
+          disclaimerContent:
+            "Estas son estimaciones generadas por IA y pueden variar según las condiciones del mercado, el estilo de vida personal y la ubicación específica dentro de una ciudad.",
+          privacyPolicy: "Política de Privacidad",
+          termsOfService: "Términos de Servicio",
+          contactUs: "Contáctanos",
+          selectCountry: "Selecciona un País",
+          feedbackExcellent:
+            "¡Excelente! Deberías vivir cómodamente en esta región.",
+          feedbackGood: "¡Bien! Deberías poder manejar bien tus gastos.",
+          feedbackFair:
+            "Regular. Es posible que debas presupuestar cuidadosamente o considerar otras opciones.",
+          feedbackPoor:
+            "Malo. Vivir aquí podría ser un desafío con tus ingresos actuales.",
+          feedbackVeryPoor:
+            "Muy malo. Se recomienda encarecidamente reconsiderar tus opciones o aumentar los ingresos.",
+          localInfoKR:
+            'En Corea, el "Jeonse" (depósito global) es común, donde se paga un gran depósito en lugar del alquiler mensual. El alquiler mensual (Wolse) a menudo también requiere un depósito significativo. Una recomendación común es mantener el alquiler por debajo del 25% de tus ingresos netos.',
+          localInfoJP:
+            'En Japón, generalmente se requieren "Reikin" (dinero clave) y "Shikikin" (depósito de seguridad) por adelantado, a menudo sumando de 3 a 6 meses de alquiler. El alquiler mensual puede ser una porción significativa de los ingresos, a menudo se recomienda que sea inferior al 30%.',
+          localInfoES:
+            "En España, los propietarios suelen exigir un depósito de seguridad de 1 a 2 meses. Los contratos de alquiler suelen ser por un mínimo de un año. El alquiler a menudo representa entre el 30% y el 35% de los ingresos.",
+          localInfoAE:
+            "En los EAU, los alquileres a menudo se pagan con 1 a 4 cheques posfechados por el año. Es crucial tener en cuenta los servicios públicos y otros gastos de vida que pueden ser altos. El alquiler puede ser hasta el 40% de los ingresos.",
+          localInfoRU:
+            "En Rusia, el alquiler de apartamentos implica un depósito de seguridad, generalmente el alquiler de un mes. Los pagos de servicios públicos a menudo son separados. El alquiler generalmente ocupa el 25-35% de los ingresos.",
+          localInfoCN:
+            "En China, es común un depósito (generalmente de 1 a 2 meses de alquiler) y un alquiler anticipado (a menudo de 3 meses). Los agentes inmobiliarios son muy utilizados. El alquiler puede ser del 30% al 40% de los ingresos.",
+          localInfoUS:
+            "En EE. UU., los depósitos de seguridad (típicamente de 1 a 2 meses de alquiler) son comunes. A menudo se recomienda que el alquiler no supere el 30% de los ingresos brutos, aunque esto puede ser mayor en ciudades caras.",
+        },
+        ar: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "توقع إيجارك وتكاليف معيشتك العالمية",
+          sectionTitle: "ابحث عن مكان إقامتك المثالي",
+          sectionDescription:
+            "أدخل التفاصيل الخاصة بك للحصول على رؤى مخصصة حول الإيجار وتكاليف المعيشة في جميع أنحاء العالم.",
+          labelCountry: "البلد:",
+          labelCity: "المدينة (اختياري):",
+          labelAnnualIncome: "الدخل السنوي الإجمالي (العملة المحلية):",
+          labelCurrency: "العملة:",
+          labelFamilySize: "حجم الأسرة:",
+          predictButton: "توقع تكاليفي",
+          resultsTitle: "رؤى إيجارك وتكاليف معيشتك المخصصة",
+          affordabilityScoreTitle: "مؤشر القدرة على تحمل الإيجار الخاص بك:",
+          affordabilityFeedbackPlaceholder:
+            "ستظهر ملاحظاتك حول القدرة على تحمل التكاليف هنا.",
+          estimatedRent: "الإيجار الشهري المقدر:",
+          recommendedRentPercentage: "النسبة الموصى بها للإيجار من الدخل:",
+          estimatedMonthlyLiving:
+            "المصاريف المعيشية الشهرية المقدرة (باستثناء الإيجار):",
+          totalMonthlyCost: "إجمالي التكلفة الشهرية المقدرة:",
+          localHousingDetails: "تفاصيل السكن المحلي:",
+          disclaimer: "إخلاء المسؤولية:",
+          disclaimerContent:
+            "هذه تقديرات تم إنشاؤها بواسطة الذكاء الاصطناعي وقد تختلف بناءً على ظروف السوق ونمط الحياة الشخصي والموقع المحدد داخل المدينة.",
+          privacyPolicy: "سياسة الخصوصية",
+          termsOfService: "شروط الخدمة",
+          contactUs: "اتصل بنا",
+          selectCountry: "اختر دولة",
+          feedbackExcellent: "ممتاز! يجب أن تعيش بشكل مريح في هذه المنطقة.",
+          feedbackGood: "جيد! يجب أن تكون قادرًا على إدارة نفقاتك بشكل جيد.",
+          feedbackFair:
+            "عادل. قد تحتاج إلى الميزانية بعناية أو النظر في خيارات أخرى.",
+          feedbackPoor: "ضعيف. قد يكون العيش هنا تحديًا بدخلك الحالي.",
+          feedbackVeryPoor:
+            "ضعيف جدًا. يوصى بشدة بإعادة النظر في خياراتك أو زيادة الدخل.",
+          localInfoKR:
+            'في كوريا، "جيونسي" (إيداع دفعة واحدة) شائع، حيث يتم دفع وديعة كبيرة بدلاً من الإيجار الشهري. غالبًا ما يتطلب الإيجار الشهري (ولسي) وديعة كبيرة أيضًا. التوصية الشائعة هي إبقاء الإيجار أقل من 25% من دخلك الصافي.',
+          localInfoJP:
+            'في اليابان، عادة ما يتطلب "ريكيين" (رسوم مفتاح) و"شيكيكين" (وديعة ضمان) مقدمًا، وغالبًا ما يصل إجماليها إلى 3-6 أشهر من الإيجار. يمكن أن يمثل الإيجار الشهري جزءًا كبيرًا من الدخل، وغالبًا ما يوصى بأن يكون أقل من 30%.',
+          localInfoES:
+            "في إسبانيا، يطلب أصحاب العقارات عادة وديعة تأمين لمدة شهر إلى شهرين. عادة ما تكون عقود الإيجار لمدة عام واحد على الأقل. يمثل الإيجار غالبًا 30-35% من الدخل.",
+          localInfoAE:
+            "في الإمارات العربية المتحدة، غالبًا ما يتم دفع الإيجارات بـ 1 إلى 4 شيكات مؤجلة للعام. من الأهمية بمكان مراعاة فواتير الخدمات ونفقات المعيشة الأخرى التي يمكن أن تكون مرتفعة. يمكن أن يصل الإيجار إلى 40% من الدخل.",
+          localInfoRU:
+            "في روسيا، يتضمن تأجير الشقق وديعة تأمين، عادة ما تكون إيجار شهر واحد. غالبًا ما تكون مدفوعات المرافق منفصلة. يشغل الإيجار عمومًا 25-35% من الدخل.",
+          localInfoCN:
+            "في الصين، الوديعة (عادة إيجار شهر إلى شهرين) والإيجار المسبق (غالبًا 3 أشهر) شائعان. يستخدم وكلاء العقارات على نطاق واسع. يمكن أن يكون الإيجار 30-40% من الدخل.",
+          localInfoUS:
+            "في الولايات المتحدة، الودائع التأمينية (عادة إيجار شهر إلى شهرين) شائعة. يوصى غالبًا بأن لا يتجاوز الإيجار 30% من إجمالي الدخل، على الرغم من أن هذا قد يكون أعلى في المدن باهظة الثمن.",
+        },
+        ru: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle:
+            "Ваш глобальный предсказатель арендной платы и стоимости жизни",
+          sectionTitle: "Найдите свое идеальное место для жизни",
+          sectionDescription:
+            "Введите свои данные, чтобы получить персонализированную информацию об арендной плате и стоимости жизни по всему миру.",
+          labelCountry: "Страна:",
+          labelCity: "Город (Необязательно):",
+          labelAnnualIncome: "Годовой валовой доход (местная валюта):",
+          labelCurrency: "Валюта:",
+          labelFamilySize: "Размер семьи:",
+          predictButton: "Рассчитать мои расходы",
+          resultsTitle:
+            "Ваши персонализированные данные по аренде и стоимости жизни",
+          affordabilityScoreTitle: "Ваш индекс доступности аренды:",
+          affordabilityFeedbackPlaceholder:
+            "Ваш отзыв о доступности появится здесь.",
+          estimatedRent: "Примерная месячная арендная плата:",
+          recommendedRentPercentage: "Рекомендуемый процент аренды от дохода:",
+          estimatedMonthlyLiving:
+            "Примерные ежемесячные расходы на проживание (без аренды):",
+          totalMonthlyCost: "Общая примерная месячная стоимость:",
+          localHousingDetails: "Информация о местном жилье:",
+          disclaimer: "Отказ от ответственности:",
+          disclaimerContent:
+            "Это оценки, сгенерированные ИИ, и они могут варьироваться в зависимости от рыночных условий, личного образа жизни и конкретного местоположения в городе.",
+          privacyPolicy: "Политика конфиденциальности",
+          termsOfService: "Условия использования",
+          contactUs: "Связаться с нами",
+          selectCountry: "Выберите страну",
+          feedbackExcellent:
+            "Отлично! Вы должны комфортно жить в этом регионе.",
+          feedbackGood: "Хорошо! Вы сможете хорошо управлять своими расходами.",
+          feedbackFair:
+            "Удовлетворительно. Вам может потребоваться тщательно планировать бюджет или рассмотреть другие варианты.",
+          feedbackPoor:
+            "Плохо. Проживание здесь может быть сложным при вашем текущем доходе.",
+          feedbackVeryPoor:
+            "Очень плохо. Настоятельно рекомендуется пересмотреть свои варианты или увеличить доход.",
+          localInfoKR:
+            'В Корее распространен "Чонсе" (Jeonse - единовременный депозит), когда вместо ежемесячной арендной платы вносится крупный депозит. Ежемесячная арендная плата (Вольсе) также часто требует значительного депозита. Распространенная рекомендация - поддерживать арендную плату ниже 25% от вашего чистого дохода.',
+          localInfoJP:
+            'В Японии обычно требуется "Рейкин" (Reikin - ключевые деньги) и "Шикикин" (Shikikin - залог) заранее, часто составляющие 3-6 месяцев арендной платы. Ежемесячная арендная плата может составлять значительную часть дохода, часто рекомендуется ниже 30%.',
+          localInfoES:
+            "В Испании арендодатели обычно требуют залог в размере 1-2 месяцев. Договоры аренды обычно заключаются минимум на один год. Арендная плата часто составляет 30-35% от дохода.",
+          localInfoAE:
+            "В ОАЭ арендная плата часто оплачивается 1–4 чеками с отложенной датой на год. Крайне важно учитывать коммунальные услуги и другие расходы на проживание, которые могут быть высокими. Арендная плата может составлять до 40% дохода.",
+          localInfoRU:
+            "В России аренда квартиры предполагает внесение залога, обычно в размере месячной арендной платы. Коммунальные платежи часто оплачиваются отдельно. Арендная плата обычно занимает 25-35% от дохода.",
+          localInfoCN:
+            "В Китае распространены залог (обычно 1-2 месяца арендной платы) и предоплата аренды (часто 3 месяца). Широко используются агенты по недвижимости. Арендная плата может составлять 30-40% от дохода.",
+          localInfoUS:
+            "В США распространены страховые депозиты (обычно 1-2 месяца аренды). Часто рекомендуется, чтобы арендная плата не превышала 30% от валового дохода, хотя в дорогих городах этот показатель может быть выше.",
+        },
+        ja: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "世界中の家賃と生活費を予測するAI",
+          sectionTitle: "理想の住まいを見つける",
+          sectionDescription:
+            "世界中の家賃と生活費に関するパーソナライズされた洞察を得るために、詳細を入力してください。",
+          labelCountry: "国:",
+          labelCity: "都市 (任意):",
+          labelAnnualIncome: "年間総収入 (現地通貨):",
+          labelCurrency: "通貨:",
+          labelFamilySize: "家族構成:",
+          predictButton: "費用を予測する",
+          resultsTitle: "あなたに合わせた家賃と生活費の洞察",
+          affordabilityScoreTitle: "あなたの家賃負担能力指数:",
+          affordabilityFeedbackPlaceholder:
+            "家賃負担能力に関するフィードバックがここに表示されます。",
+          estimatedRent: "推定月額家賃:",
+          recommendedRentPercentage: "推奨される収入に対する家賃の割合:",
+          estimatedMonthlyLiving: "推定月額生活費 (家賃を除く):",
+          totalMonthlyCost: "推定合計月額費用:",
+          localHousingDetails: "現地の住宅情報:",
+          disclaimer: "免責事項:",
+          disclaimerContent:
+            "これらはAIが生成した推定値であり、市場状況、個人のライフスタイル、および都市内の特定の場所によって異なる場合があります。",
+          privacyPolicy: "プライバシーポリシー",
+          termsOfService: "利用規約",
+          contactUs: "お問い合わせ",
+          selectCountry: "国を選択してください",
+          feedbackExcellent: "素晴らしい！この地域で快適に暮らせるでしょう。",
+          feedbackGood: "良好！支出をうまく管理できるでしょう。",
+          feedbackFair:
+            "普通。慎重に予算を組むか、他の選択肢を検討する必要があるかもしれません。",
+          feedbackPoor:
+            "悪い。現在の収入では、ここで生活するのは難しいかもしれません。",
+          feedbackVeryPoor:
+            "非常に悪い。選択肢を再検討するか、収入を増やすことを強くお勧めします。",
+          localInfoKR:
+            "韓国では、「チョンセ」（保証金一括払い）が一般的で、月々の家賃の代わりに高額な保証金を支払います。月々の家賃（ウォルセ）もかなりの保証金を必要とすることがよくあります。一般的には、純収入の25%未満に家賃を抑えることが推奨されます。",
+          localInfoJP:
+            "日本では、「礼金」と「敷金」が初期費用として一般的に必要とされ、合計で家賃の3〜6ヶ月分になることがよくあります。月額家賃は収入のかなりの部分を占める可能性があり、通常は30%未満が推奨されます。",
+          localInfoES:
+            "スペインでは、家主は通常1〜2ヶ月分の保証金を要求します。賃貸契約は通常、最低1年間です。家賃は収入の30〜35%を占めることが多いです。",
+          localInfoAE:
+            "アラブ首長国連邦では、家賃は年間1〜4枚の振り出し日を過ぎた小切手で支払われることがよくあります。光熱費やその他の生活費が高額になる可能性があるため、それらを考慮することが重要です。家賃は収入の最大40%になることがあります。",
+          localInfoRU:
+            "ロシアでは、アパートの賃貸には保証金（通常1ヶ月分の家賃）が必要です。公共料金は別途支払うことが多いです。家賃は通常、収入の25〜35%を占めます。",
+          localInfoCN:
+            "中国では、敷金（通常家賃の1〜2ヶ月分）と前払い家賃（しばしば3ヶ月分）が一般的です。不動産仲介業者が広く利用されています。家賃は収入の30〜40%になることがあります。",
+          localInfoUS:
+            "米国では、敷金（通常家賃の1〜2ヶ月分）が一般的です。家賃は通常、総収入の30%を超えないことが推奨されますが、高価な都市ではこれ以上になることもあります。",
+        },
+        zh: {
+          headerTitle: "RentSavvy AI",
+          headerSubtitle: "您的全球租金和生活成本预测器",
+          sectionTitle: "找到您理想的居住地",
+          sectionDescription:
+            "输入您的详细信息，以获取全球租金和生活成本的个性化见解。",
+          labelCountry: "国家/地区:",
+          labelCity: "城市 (可选):",
+          labelAnnualIncome: "年总收入 (当地货币):",
+          labelCurrency: "货币:",
+          labelFamilySize: "家庭人数:",
+          predictButton: "预测我的费用",
+          resultsTitle: "您的个性化租金和生活成本洞察",
+          affordabilityScoreTitle: "您的租金承受能力指数:",
+          affordabilityFeedbackPlaceholder: "您的承受能力反馈将显示在此处。",
+          estimatedRent: "预计月租金:",
+          recommendedRentPercentage: "推荐的收入租金百分比:",
+          estimatedMonthlyLiving: "预计每月生活开销 (不含租金):",
+          totalMonthlyCost: "总计预计每月费用:",
+          localHousingDetails: "当地住房详情:",
+          disclaimer: "免责声明:",
+          disclaimerContent:
+            "这些是AI生成的估计值，可能因市场状况、个人生活方式和城市内的具体位置而异。",
+          privacyPolicy: "隐私政策",
+          termsOfService: "服务条款",
+          contactUs: "联系我们",
+          selectCountry: "选择国家/地区",
+          feedbackExcellent: "太棒了！您应该能在这个地区舒适地生活。",
+          feedbackGood: "良好！您应该能够很好地管理您的开支。",
+          feedbackFair: "一般。您可能需要仔细预算或考虑其他选择。",
+          feedbackPoor: "差。以您目前的收入在这里生活可能具有挑战性。",
+          feedbackVeryPoor: "非常差。强烈建议您重新考虑您的选择或增加收入。",
+          localInfoKR:
+            '在韩国，"全租" (Jeonse，一次性押金) 很常见，即支付一大笔押金而不是月租。月租 (Wolse) 也常需要大笔押金。一般建议将租金保持在净收入的25%以下。',
+          localInfoJP:
+            '在日本，通常需要预付"礼金" (Reikin，感谢金) 和"敷金" (Shikikin，押金)，总计通常为3-6个月的租金。月租金可能占收入的很大一部分，通常建议低于30%。',
+          localInfoES:
+            "在西班牙，房东通常要求1-2个月的押金。租赁合同通常至少一年。租金通常占收入的30-35%。",
+          localInfoAE:
+            "在阿联酋，租金通常以1至4张远期支票支付一年。务必考虑水电费和其他生活开销，这些可能很高。租金可达收入的40%。",
+          localInfoRU:
+            "在俄罗斯，公寓租赁需要支付押金，通常是一个月的租金。公用事业费用通常是分开支付的。租金通常占收入的25-35%。",
+          localInfoCN:
+            "在中国，押金（通常是1-2个月的租金）和预付租金（通常是3个月）很常见。房地产中介被广泛使用。租金可以占收入的30-40%。",
+          localInfoUS:
+            "在美国，押金（通常是1-2个月的租金）很常见。租金通常建议不超过总收入的30%，尽管在昂贵的城市可能会更高。",
+        },
+      };
 
-        const languageSelect = document.getElementById('languageSelect');
-        const form = document.getElementById('rentPredictorForm');
-        const resultsSection = document.getElementById('results');
-        const affordabilityScoreElement = document.getElementById('affordabilityScore');
-        const affordabilityFeedbackElement = document.getElementById('affordabilityFeedback');
-        const estimatedRentElement = document.getElementById('estimatedRent');
-        const recommendedRentPercentageElement = document.getElementById('recommendedRentPercentage');
-        const estimatedLivingExpensesElement = document.getElementById('estimatedLivingExpenses');
-        const totalMonthlyCostElement = document.getElementById('totalMonthlyCost');
-        const localHousingInfoElement = document.getElementById('localHousingInfo');
-        const localHousingDetailsContentElement = document.getElementById('localHousingDetailsContent');
-        const countrySelect = document.getElementById('country');
-        const currencySelect = document.getElementById('currency');
+      const languageSelect = document.getElementById("languageSelect");
+      const form = document.getElementById("rentPredictorForm");
+      const resultsSection = document.getElementById("results");
+      const affordabilityScoreElement =
+        document.getElementById("affordabilityScore");
+      const affordabilityFeedbackElement = document.getElementById(
+        "affordabilityFeedback"
+      );
+      const estimatedRentElement = document.getElementById("estimatedRent");
+      const recommendedRentPercentageElement = document.getElementById(
+        "recommendedRentPercentage"
+      );
+      const estimatedLivingExpensesElement = document.getElementById(
+        "estimatedLivingExpenses"
+      );
+      const totalMonthlyCostElement =
+        document.getElementById("totalMonthlyCost");
+      const localHousingInfoElement =
+        document.getElementById("localHousingInfo");
+      const localHousingDetailsContentElement = document.getElementById(
+        "localHousingDetailsContent"
+      );
+      const countrySelect = document.getElementById("country");
+      const currencySelect = document.getElementById("currency");
 
-        // Data for estimation (simplified for client-side demo)
-        // In a real application, this would come from a robust API/database.
-        const countryData = {
-            'us': {
-                avgRent: 1800, // USD, national average for a 1-bedroom
-                livingCostFactor: 0.7, // Multiplier for living expenses relative to rent
-                rentToIncomeRatio: 0.30, // Recommended
-                localHousingInfo: 'localInfoUS',
-                currency: 'USD'
-            },
-            'kr': {
-                avgRent: 800000, // KRW, average for a 1-room in Seoul (Wolse with deposit)
-                livingCostFactor: 0.6,
-                rentToIncomeRatio: 0.25, // Lower due to Jeonse option / higher deposit for Wolse
-                localHousingInfo: 'localInfoKR',
-                currency: 'KRW'
-            },
-            'jp': {
-                avgRent: 90000, // JPY, average for a 1K in Tokyo
-                livingCostFactor: 0.65,
-                rentToIncomeRatio: 0.30, // Can be high due to Shiki/Reikin
-                localHousingInfo: 'localInfoJP',
-                currency: 'JPY'
-            },
-            'es': {
-                avgRent: 800, // EUR, average for 1-bedroom in city
-                livingCostFactor: 0.55,
-                rentToIncomeRatio: 0.35,
-                localHousingInfo: 'localInfoES',
-                currency: 'EUR'
-            },
-            'ae': {
-                avgRent: 6000, // AED, average for 1-bedroom in Dubai
-                livingCostFactor: 0.75,
-                rentToIncomeRatio: 0.40, // Can be higher
-                localHousingInfo: 'localInfoAE',
-                currency: 'AED'
-            },
-            'ru': {
-                avgRent: 40000, // RUB, average for 1-bedroom in Moscow
-                livingCostFactor: 0.5,
-                rentToIncomeRatio: 0.30,
-                localHousingInfo: 'localInfoRU',
-                currency: 'RUB'
-            },
-            'cn': {
-                avgRent: 5000, // CNY, average for 1-bedroom in Shanghai
-                livingCostFactor: 0.65,
-                rentToIncomeRatio: 0.35,
-                localHousingInfo: 'localInfoCN',
-                currency: 'CNY'
-            }
-            // Add more countries as needed
-        };
+      // Data for estimation (simplified for client-side demo)
+      // In a real application, this would come from a robust API/database.
+      const countryData = {
+        us: {
+          avgRent: 1800, // USD, national average for a 1-bedroom
+          livingCostFactor: 0.7, // Multiplier for living expenses relative to rent
+          rentToIncomeRatio: 0.3, // Recommended
+          localHousingInfo: "localInfoUS",
+          currency: "USD",
+        },
+        kr: {
+          avgRent: 800000, // KRW, average for a 1-room in Seoul (Wolse with deposit)
+          livingCostFactor: 0.6,
+          rentToIncomeRatio: 0.25, // Lower due to Jeonse option / higher deposit for Wolse
+          localHousingInfo: "localInfoKR",
+          currency: "KRW",
+        },
+        jp: {
+          avgRent: 90000, // JPY, average for a 1K in Tokyo
+          livingCostFactor: 0.65,
+          rentToIncomeRatio: 0.3, // Can be high due to Shiki/Reikin
+          localHousingInfo: "localInfoJP",
+          currency: "JPY",
+        },
+        es: {
+          avgRent: 800, // EUR, average for 1-bedroom in city
+          livingCostFactor: 0.55,
+          rentToIncomeRatio: 0.35,
+          localHousingInfo: "localInfoES",
+          currency: "EUR",
+        },
+        ae: {
+          avgRent: 6000, // AED, average for 1-bedroom in Dubai
+          livingCostFactor: 0.75,
+          rentToIncomeRatio: 0.4, // Can be higher
+          localHousingInfo: "localInfoAE",
+          currency: "AED",
+        },
+        ru: {
+          avgRent: 40000, // RUB, average for 1-bedroom in Moscow
+          livingCostFactor: 0.5,
+          rentToIncomeRatio: 0.3,
+          localHousingInfo: "localInfoRU",
+          currency: "RUB",
+        },
+        cn: {
+          avgRent: 5000, // CNY, average for 1-bedroom in Shanghai
+          livingCostFactor: 0.65,
+          rentToIncomeRatio: 0.35,
+          localHousingInfo: "localInfoCN",
+          currency: "CNY",
+        },
+        // Add more countries as needed
+      };
 
-        // --- Localization Functions ---
-        function setLanguage(lang) {
-            const currentLang = lang === 'auto' ? navigator.language.split('-')[0] : lang;
-            const effectiveLang = translations[currentLang] ? currentLang : 'en'; // Fallback to English
+      // --- Localization Functions ---
+      function setLanguage(lang) {
+        const currentLang =
+          lang === "auto" ? navigator.language.split("-")[0] : lang;
+        const effectiveLang = translations[currentLang] ? currentLang : "en"; // Fallback to English
 
-            document.documentElement.lang = effectiveLang; // Set HTML lang attribute
+        document.documentElement.lang = effectiveLang; // Set HTML lang attribute
 
-            document.querySelectorAll('[data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                if (translations[effectiveLang] && translations[effectiveLang][key]) {
-                    element.textContent = translations[effectiveLang][key];
-                }
-            });
+        document.querySelectorAll("[data-key]").forEach((element) => {
+          const key = element.getAttribute("data-key");
+          if (translations[effectiveLang] && translations[effectiveLang][key]) {
+            element.textContent = translations[effectiveLang][key];
+          }
+        });
 
-            // Update country options
-            const currentCountry = countrySelect.value;
-            countrySelect.innerHTML = `<option value="">${translations[effectiveLang].selectCountry}</option>`;
-            for (const code in countryData) {
-                const option = document.createElement('option');
-                option.value = code;
-                option.textContent = translations[effectiveLang][`countryName_${code}`] || translations['en'][`countryName_${code}`] || code.toUpperCase(); // Fallback
-                countrySelect.appendChild(option);
-            }
-            if (currentCountry) {
-                countrySelect.value = currentCountry; // Restore selected country
-            }
+        // Update country options
+        const currentCountry = countrySelect.value;
+        countrySelect.innerHTML = `<option value="">${translations[effectiveLang].selectCountry}</option>`;
+        for (const code in countryData) {
+          const option = document.createElement("option");
+          option.value = code;
+          option.textContent =
+            translations[effectiveLang][`countryName_${code}`] ||
+            translations["en"][`countryName_${code}`] ||
+            code.toUpperCase(); // Fallback
+          countrySelect.appendChild(option);
+        }
+        if (currentCountry) {
+          countrySelect.value = currentCountry; // Restore selected country
+        }
 
-            // Update currency options based on selected country
+        // Update currency options based on selected country
+        updateCurrencyOptions();
+
+        // Save language preference to localStorage
+        localStorage.setItem("rentSavvyLanguage", lang);
+      }
+
+      // Add country names to translations (example for a few)
+      translations.en.countryName_us = "United States";
+      translations.en.countryName_kr = "South Korea";
+      translations.en.countryName_jp = "Japan";
+      translations.en.countryName_es = "Spain";
+      translations.en.countryName_ae = "United Arab Emirates";
+      translations.en.countryName_ru = "Russia";
+      translations.en.countryName_cn = "China";
+
+      translations.ko.countryName_us = "미국";
+      translations.ko.countryName_kr = "대한민국";
+      translations.ko.countryName_jp = "일본";
+      translations.ko.countryName_es = "스페인";
+      translations.ko.countryName_ae = "아랍에미리트";
+      translations.ko.countryName_ru = "러시아";
+      translations.ko.countryName_cn = "중국";
+
+      translations.es.countryName_us = "Estados Unidos";
+      translations.es.countryName_kr = "Corea del Sur";
+      translations.es.countryName_jp = "Japón";
+      translations.es.countryName_es = "España";
+      translations.es.countryName_ae = "Emiratos Árabes Unidos";
+      translations.es.countryName_ru = "Rusia";
+      translations.es.countryName_cn = "China";
+
+      translations.ar.countryName_us = "الولايات المتحدة";
+      translations.ar.countryName_kr = "كوريا الجنوبية";
+      translations.ar.countryName_jp = "اليابان";
+      translations.ar.countryName_es = "إسبانيا";
+      translations.ar.countryName_ae = "الإمارات العربية المتحدة";
+      translations.ar.countryName_ru = "روسيا";
+      translations.ar.countryName_cn = "الصين";
+
+      translations.ru.countryName_us = "Соединенные Штаты";
+      translations.ru.countryName_kr = "Южная Корея";
+      translations.ru.countryName_jp = "Япония";
+      translations.ru.countryName_es = "Испания";
+      translations.ru.countryName_ae = "Объединенные Арабские Эмираты";
+      translations.ru.countryName_ru = "Россия";
+      translations.ru.countryName_cn = "Китай";
+
+      translations.ja.countryName_us = "アメリカ合衆国";
+      translations.ja.countryName_kr = "韓国";
+      translations.ja.countryName_jp = "日本";
+      translations.ja.countryName_es = "スペイン";
+      translations.ja.countryName_ae = "アラブ首長国連邦";
+      translations.ja.countryName_ru = "ロシア";
+      translations.ja.countryName_cn = "中国";
+
+      translations.zh.countryName_us = "美国";
+      translations.zh.countryName_kr = "韩国";
+      translations.zh.countryName_jp = "日本";
+      translations.zh.countryName_es = "西班牙";
+      translations.zh.countryName_ae = "阿拉伯联合酋长国";
+      translations.zh.countryName_ru = "俄罗斯";
+      translations.zh.countryName_cn = "中国";
+
+      function updateCurrencyOptions() {
+        const selectedCountryCode = countrySelect.value;
+        const defaultCurrency = countryData[selectedCountryCode]
+          ? countryData[selectedCountryCode].currency
+          : "USD";
+
+        currencySelect.innerHTML = ""; // Clear existing options
+        const currencies = ["USD", "KRW", "JPY", "EUR", "AED", "RUB", "CNY"];
+        currencies.forEach((curr) => {
+          const option = document.createElement("option");
+          option.value = curr;
+          option.textContent = curr;
+          if (curr === defaultCurrency) {
+            option.selected = true;
+          }
+          currencySelect.appendChild(option);
+        });
+      }
+
+      // --- Core Logic ---
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const country = document.getElementById("country").value;
+        const city = document.getElementById("city").value; // Currently unused for core logic, but for future AI expansion
+        const income = parseFloat(document.getElementById("income").value);
+        const currency = document.getElementById("currency").value;
+        const familySize = parseInt(
+          document.getElementById("familySize").value
+        );
+
+        if (
+          !country ||
+          isNaN(income) ||
+          income <= 0 ||
+          isNaN(familySize) ||
+          familySize <= 0
+        ) {
+          alert("Please fill in all required fields correctly.");
+          return;
+        }
+
+        const data = countryData[country];
+        if (!data) {
+          alert(
+            "Data for the selected country is not available yet. Please try another."
+          );
+          return;
+        }
+
+        // AI-like estimation (simplified algorithm)
+        // In a real scenario, this would involve a robust backend AI model
+        // considering more granular data (city-level, district-level, property type, etc.)
+        let estimatedMonthlyRent = data.avgRent;
+        // Adjust rent based on city (if provided, very basic mock)
+        if (city) {
+          if (city.toLowerCase().includes("seoul") && country === "kr")
+            estimatedMonthlyRent *= 1.3;
+          if (city.toLowerCase().includes("new york") && country === "us")
+            estimatedMonthlyRent *= 2.0;
+          if (city.toLowerCase().includes("tokyo") && country === "jp")
+            estimatedMonthlyRent *= 1.5;
+          // Add more city-specific adjustments
+        }
+
+        // Adjust based on family size (larger families might need more space, thus higher rent)
+        if (familySize > 1) {
+          estimatedMonthlyRent *= 1 + (familySize - 1) * 0.15; // +15% per additional person
+        }
+
+        const monthlyIncome = income / 12;
+        const recommendedRentBudget = monthlyIncome * data.rentToIncomeRatio;
+        const estimatedMonthlyLivingExpenses =
+          estimatedMonthlyRent *
+          data.livingCostFactor *
+          (1 + (familySize - 1) * 0.2); // Living expenses increase with family size
+
+        const totalEstimatedMonthlyCost =
+          estimatedMonthlyRent + estimatedMonthlyLivingExpenses;
+
+        // --- Rent Affordability Index Calculation (Differential Feature) ---
+        // Score from 0 to 100, where 100 is excellent affordability
+        let affordabilityScore = 0;
+        const actualRentToIncomeRatio = estimatedMonthlyRent / monthlyIncome;
+
+        if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 0.8) {
+          // Well below recommended
+          affordabilityScore = 100;
+        } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.0) {
+          // At or just below recommended
+          affordabilityScore = 80;
+        } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.2) {
+          // Slightly above recommended
+          affordabilityScore = 60;
+        } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.5) {
+          // Significantly above recommended
+          affordabilityScore = 40;
+        } else {
+          // Very difficult
+          affordabilityScore = 20;
+        }
+
+        // Adjust score based on total cost vs income
+        const totalCostToIncomeRatio =
+          totalEstimatedMonthlyCost / monthlyIncome;
+        if (totalCostToIncomeRatio >= 0.8) {
+          // If total costs eat up 80% or more of income
+          affordabilityScore -= 20;
+        }
+        if (totalCostToIncomeRatio >= 0.9) {
+          affordabilityScore -= 20;
+        }
+        affordabilityScore = Math.max(0, affordabilityScore); // Ensure score doesn't go below 0
+
+        // --- Display Results ---
+        affordabilityScoreElement.textContent = affordabilityScore;
+        let feedbackKey = "";
+        if (affordabilityScore >= 90) {
+          feedbackKey = "feedbackExcellent";
+        } else if (affordabilityScore >= 70) {
+          feedbackKey = "feedbackGood";
+        } else if (affordabilityScore >= 50) {
+          feedbackKey = "feedbackFair";
+        } else if (affordabilityScore >= 30) {
+          feedbackKey = "feedbackPoor";
+        } else {
+          feedbackKey = "feedbackVeryPoor";
+        }
+        affordabilityFeedbackElement.textContent =
+          translations[document.documentElement.lang][feedbackKey];
+
+        estimatedRentElement.textContent = `${estimatedMonthlyRent.toLocaleString(
+          undefined,
+          { maximumFractionDigits: 0 }
+        )} ${currency}`;
+        recommendedRentPercentageElement.textContent = `${(
+          data.rentToIncomeRatio * 100
+        ).toFixed(0)}% (Your calculated: ${(
+          actualRentToIncomeRatio * 100
+        ).toFixed(1)}%)`;
+        estimatedLivingExpensesElement.textContent = `${estimatedMonthlyLivingExpenses.toLocaleString(
+          undefined,
+          { maximumFractionDigits: 0 }
+        )} ${currency}`;
+        totalMonthlyCostElement.textContent = `${totalEstimatedMonthlyCost.toLocaleString(
+          undefined,
+          { maximumFractionDigits: 0 }
+        )} ${currency}`;
+
+        // Display local housing details
+        const localInfoKey = data.localHousingInfo;
+        if (translations[document.documentElement.lang][localInfoKey]) {
+          localHousingDetailsContentElement.textContent =
+            translations[document.documentElement.lang][localInfoKey];
+          localHousingInfoElement.style.display = "block";
+        } else {
+          localHousingInfoElement.style.display = "none";
+        }
+
+        resultsSection.style.display = "block";
+        resultsSection.scrollIntoView({ behavior: "smooth" });
+
+        // Save data to localStorage
+        saveToLocalStorage({
+          country: country,
+          city: city,
+          income: income,
+          currency: currency,
+          familySize: familySize,
+        });
+      });
+
+      // --- Local Storage Management ---
+      function saveToLocalStorage(data) {
+        try {
+          localStorage.setItem("rentSavvyFormData", JSON.stringify(data));
+        } catch (e) {
+          console.error("Error saving to localStorage:", e);
+          alert(
+            "Your browser's storage is full or disabled. Some features may not work."
+          );
+        }
+      }
+
+      function loadFromLocalStorage() {
+        try {
+          const savedData = localStorage.getItem("rentSavvyFormData");
+          if (savedData) {
+            const data = JSON.parse(savedData);
+            document.getElementById("country").value = data.country || "";
+            document.getElementById("city").value = data.city || "";
+            document.getElementById("income").value = data.income || "";
+            document.getElementById("currency").value = data.currency || "";
+            document.getElementById("familySize").value =
+              data.familySize || "1";
+            // Re-populate currency options to ensure correct one is selected
             updateCurrencyOptions();
-
-            // Save language preference to localStorage
-            localStorage.setItem('rentSavvyLanguage', lang);
+            if (data.currency) {
+              currencySelect.value = data.currency;
+            }
+          }
+        } catch (e) {
+          console.error("Error loading from localStorage:", e);
         }
+      }
 
-        // Add country names to translations (example for a few)
-        translations.en.countryName_us = 'United States';
-        translations.en.countryName_kr = 'South Korea';
-        translations.en.countryName_jp = 'Japan';
-        translations.en.countryName_es = 'Spain';
-        translations.en.countryName_ae = 'United Arab Emirates';
-        translations.en.countryName_ru = 'Russia';
-        translations.en.countryName_cn = 'China';
-
-        translations.ko.countryName_us = '미국';
-        translations.ko.countryName_kr = '대한민국';
-        translations.ko.countryName_jp = '일본';
-        translations.ko.countryName_es = '스페인';
-        translations.ko.countryName_ae = '아랍에미리트';
-        translations.ko.countryName_ru = '러시아';
-        translations.ko.countryName_cn = '중국';
-
-        translations.es.countryName_us = 'Estados Unidos';
-        translations.es.countryName_kr = 'Corea del Sur';
-        translations.es.countryName_jp = 'Japón';
-        translations.es.countryName_es = 'España';
-        translations.es.countryName_ae = 'Emiratos Árabes Unidos';
-        translations.es.countryName_ru = 'Rusia';
-        translations.es.countryName_cn = 'China';
-
-        translations.ar.countryName_us = 'الولايات المتحدة';
-        translations.ar.countryName_kr = 'كوريا الجنوبية';
-        translations.ar.countryName_jp = 'اليابان';
-        translations.ar.countryName_es = 'إسبانيا';
-        translations.ar.countryName_ae = 'الإمارات العربية المتحدة';
-        translations.ar.countryName_ru = 'روسيا';
-        translations.ar.countryName_cn = 'الصين';
-
-        translations.ru.countryName_us = 'Соединенные Штаты';
-        translations.ru.countryName_kr = 'Южная Корея';
-        translations.ru.countryName_jp = 'Япония';
-        translations.ru.countryName_es = 'Испания';
-        translations.ru.countryName_ae = 'Объединенные Арабские Эмираты';
-        translations.ru.countryName_ru = 'Россия';
-        translations.ru.countryName_cn = 'Китай';
-
-        translations.ja.countryName_us = 'アメリカ合衆国';
-        translations.ja.countryName_kr = '韓国';
-        translations.ja.countryName_jp = '日本';
-        translations.ja.countryName_es = 'スペイン';
-        translations.ja.countryName_ae = 'アラブ首長国連邦';
-        translations.ja.countryName_ru = 'ロシア';
-        translations.ja.countryName_cn = '中国';
-
-        translations.zh.countryName_us = '美国';
-        translations.zh.countryName_kr = '韩国';
-        translations.zh.countryName_jp = '日本';
-        translations.zh.countryName_es = '西班牙';
-        translations.zh.countryName_ae = '阿拉伯联合酋长国';
-        translations.zh.countryName_ru = '俄罗斯';
-        translations.zh.countryName_cn = '中国';
-
-        function updateCurrencyOptions() {
-            const selectedCountryCode = countrySelect.value;
-            const defaultCurrency = countryData[selectedCountryCode] ? countryData[selectedCountryCode].currency : 'USD';
-
-            currencySelect.innerHTML = ''; // Clear existing options
-            const currencies = ['USD', 'KRW', 'JPY', 'EUR', 'AED', 'RUB', 'CNY'];
-            currencies.forEach(curr => {
-                const option = document.createElement('option');
-                option.value = curr;
-                option.textContent = curr;
-                if (curr === defaultCurrency) {
-                    option.selected = true;
-                }
-                currencySelect.appendChild(option);
-            });
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("rentSavvyLanguage");
+        if (savedLang) {
+          languageSelect.value = savedLang;
+          setLanguage(savedLang);
+        } else {
+          setLanguage("auto"); // Auto-detect on first visit
         }
+        loadFromLocalStorage(); // Load saved form data
+        countrySelect.addEventListener("change", updateCurrencyOptions);
+        updateCurrencyOptions(); // Initial currency options setup
+      });
 
-        // --- Core Logic ---
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const country = document.getElementById('country').value;
-            const city = document.getElementById('city').value; // Currently unused for core logic, but for future AI expansion
-            const income = parseFloat(document.getElementById('income').value);
-            const currency = document.getElementById('currency').value;
-            const familySize = parseInt(document.getElementById('familySize').value);
-
-            if (!country || isNaN(income) || income <= 0 || isNaN(familySize) || familySize <= 0) {
-                alert('Please fill in all required fields correctly.');
-                return;
-            }
-
-            const data = countryData[country];
-            if (!data) {
-                alert('Data for the selected country is not available yet. Please try another.');
-                return;
-            }
-
-            // AI-like estimation (simplified algorithm)
-            // In a real scenario, this would involve a robust backend AI model
-            // considering more granular data (city-level, district-level, property type, etc.)
-            let estimatedMonthlyRent = data.avgRent;
-            // Adjust rent based on city (if provided, very basic mock)
-            if (city) {
-                if (city.toLowerCase().includes('seoul') && country === 'kr') estimatedMonthlyRent *= 1.3;
-                if (city.toLowerCase().includes('new york') && country === 'us') estimatedMonthlyRent *= 2.0;
-                if (city.toLowerCase().includes('tokyo') && country === 'jp') estimatedMonthlyRent *= 1.5;
-                // Add more city-specific adjustments
-            }
-
-            // Adjust based on family size (larger families might need more space, thus higher rent)
-            if (familySize > 1) {
-                estimatedMonthlyRent *= (1 + (familySize - 1) * 0.15); // +15% per additional person
-            }
-
-            const monthlyIncome = income / 12;
-            const recommendedRentBudget = monthlyIncome * data.rentToIncomeRatio;
-            const estimatedMonthlyLivingExpenses = estimatedMonthlyRent * data.livingCostFactor * (1 + (familySize - 1) * 0.2); // Living expenses increase with family size
-
-            const totalEstimatedMonthlyCost = estimatedMonthlyRent + estimatedMonthlyLivingExpenses;
-
-            // --- Rent Affordability Index Calculation (Differential Feature) ---
-            // Score from 0 to 100, where 100 is excellent affordability
-            let affordabilityScore = 0;
-            const actualRentToIncomeRatio = estimatedMonthlyRent / monthlyIncome;
-
-            if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 0.8) { // Well below recommended
-                affordabilityScore = 100;
-            } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.0) { // At or just below recommended
-                affordabilityScore = 80;
-            } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.2) { // Slightly above recommended
-                affordabilityScore = 60;
-            } else if (actualRentToIncomeRatio <= data.rentToIncomeRatio * 1.5) { // Significantly above recommended
-                affordabilityScore = 40;
-            } else { // Very difficult
-                affordabilityScore = 20;
-            }
-
-            // Adjust score based on total cost vs income
-            const totalCostToIncomeRatio = totalEstimatedMonthlyCost / monthlyIncome;
-            if (totalCostToIncomeRatio >= 0.8) { // If total costs eat up 80% or more of income
-                affordabilityScore -= 20;
-            }
-            if (totalCostToIncomeRatio >= 0.9) {
-                affordabilityScore -= 20;
-            }
-            affordabilityScore = Math.max(0, affordabilityScore); // Ensure score doesn't go below 0
-
-            // --- Display Results ---
-            affordabilityScoreElement.textContent = affordabilityScore;
-            let feedbackKey = '';
-            if (affordabilityScore >= 90) {
-                feedbackKey = 'feedbackExcellent';
-            } else if (affordabilityScore >= 70) {
-                feedbackKey = 'feedbackGood';
-            } else if (affordabilityScore >= 50) {
-                feedbackKey = 'feedbackFair';
-            } else if (affordabilityScore >= 30) {
-                feedbackKey = 'feedbackPoor';
-            } else {
-                feedbackKey = 'feedbackVeryPoor';
-            }
-            affordabilityFeedbackElement.textContent = translations[document.documentElement.lang][feedbackKey];
-
-            estimatedRentElement.textContent = `${estimatedMonthlyRent.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${currency}`;
-            recommendedRentPercentageElement.textContent = `${(data.rentToIncomeRatio * 100).toFixed(0)}% (Your calculated: ${(actualRentToIncomeRatio * 100).toFixed(1)}%)`;
-            estimatedLivingExpensesElement.textContent = `${estimatedMonthlyLivingExpenses.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${currency}`;
-            totalMonthlyCostElement.textContent = `${totalEstimatedMonthlyCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} ${currency}`;
-
-            // Display local housing details
-            const localInfoKey = data.localHousingInfo;
-            if (translations[document.documentElement.lang][localInfoKey]) {
-                localHousingDetailsContentElement.textContent = translations[document.documentElement.lang][localInfoKey];
-                localHousingInfoElement.style.display = 'block';
-            } else {
-                localHousingInfoElement.style.display = 'none';
-            }
-
-            resultsSection.style.display = 'block';
-            resultsSection.scrollIntoView({ behavior: 'smooth' });
-
-            // Save data to localStorage
-            saveToLocalStorage({
-                country: country,
-                city: city,
-                income: income,
-                currency: currency,
-                familySize: familySize
-            });
-        });
-
-        // --- Local Storage Management ---
-        function saveToLocalStorage(data) {
-            try {
-                localStorage.setItem('rentSavvyFormData', JSON.stringify(data));
-            } catch (e) {
-                console.error("Error saving to localStorage:", e);
-                alert("Your browser's storage is full or disabled. Some features may not work.");
-            }
-        }
-
-        function loadFromLocalStorage() {
-            try {
-                const savedData = localStorage.getItem('rentSavvyFormData');
-                if (savedData) {
-                    const data = JSON.parse(savedData);
-                    document.getElementById('country').value = data.country || '';
-                    document.getElementById('city').value = data.city || '';
-                    document.getElementById('income').value = data.income || '';
-                    document.getElementById('currency').value = data.currency || '';
-                    document.getElementById('familySize').value = data.familySize || '1';
-                    // Re-populate currency options to ensure correct one is selected
-                    updateCurrencyOptions();
-                    if (data.currency) {
-                        currencySelect.value = data.currency;
-                    }
-                }
-            } catch (e) {
-                console.error("Error loading from localStorage:", e);
-            }
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('rentSavvyLanguage');
-            if (savedLang) {
-                languageSelect.value = savedLang;
-                setLanguage(savedLang);
-            } else {
-                setLanguage('auto'); // Auto-detect on first visit
-            }
-            loadFromLocalStorage(); // Load saved form data
-            countrySelect.addEventListener('change', updateCurrencyOptions);
-            updateCurrencyOptions(); // Initial currency options setup
-        });
-
-        languageSelect.addEventListener('change', (event) => {
-            setLanguage(event.target.value);
-        });
-
+      languageSelect.addEventListener("change", (event) => {
+        setLanguage(event.target.value);
+      });
     </script>
-</body>
+  </body>
 </html>
